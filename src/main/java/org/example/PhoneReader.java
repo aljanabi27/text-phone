@@ -21,6 +21,7 @@ public class PhoneReader {
         for (int i = 0;i<number;i++){
             listPhoneNumber.add((PhoneNumber) ois.readObject());
         };
+        ois.close();
         return listPhoneNumber;
     };
 

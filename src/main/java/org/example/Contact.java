@@ -17,4 +17,12 @@ public class Contact {
         listPhoneNumber.remove(index-1);
     }
 
+    public void removeAll(){
+        this.listPhoneNumber = new ArrayList<PhoneNumber>();
+    }
+
+    public ArrayList<PhoneNumber> getInformation(){
+        return listPhoneNumber;
+    }
+
 }
