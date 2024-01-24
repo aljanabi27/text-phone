@@ -1,6 +1,8 @@
 package org.example;
 
-public class PhoneNumber {
+import java.io.Serializable;
+
+public class PhoneNumber implements Serializable {
     private String firstName,lastName,number;
 
     public PhoneNumber(String firstName,String lastName,String number) {

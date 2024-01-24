@@ -1,7 +1,9 @@
 package org.example;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Main {
@@ -21,7 +23,7 @@ public class Main {
         System.out.println("pleas enter id for number phone that want delete it "+"{"+contact.getSize()+"}");
         int index = input.nextInt();
         if(index <= contact.getSize()){
-            contact.remove(index-1);
+            contact.remove(index);
             System.out.println("this number is remove");
         } else {
             System.out.println("this number out of range");
@@ -42,6 +44,9 @@ public class Main {
         for(PhoneNumber x:contact.getInformation()){System.out.println(x);}
         System.out.println("------------------------------------------------------------------------------------");
     }
+    static void chosser(){
+        System.out.println("chooses one of this option\n1-add number phone\n2-delete number Phone\n3-print number phone\n4-delete all number phone\n5- exit from program");
+    }
     static void Exit(boolean status){
 
     }
@@ -50,6 +55,10 @@ public class Main {
 //      create file to storge object if it is not found
         if(!file.exists()){
             file.createNewFile();
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.close();
+            fos.close();
         }
 //      create connection to file purpose read information and store in array list
         PhoneReader phoneReader = new PhoneReader(file);
@@ -59,6 +68,7 @@ public class Main {
         int x;
         boolean status = true;
         while(status){
+            chosser();
             x = input.nextInt();
             switch (x){
                 case 1:add(contact);
@@ -70,6 +80,7 @@ public class Main {
                 case 4:clear(contact);
                 break;
                 case 5:status = false;
+                System.out.println("program finshed");
             }
         }
 //      ------------------------------------------- code ------------------------------------------------

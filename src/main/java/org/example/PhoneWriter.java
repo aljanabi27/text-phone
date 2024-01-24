@@ -12,7 +12,9 @@ public class PhoneWriter {
     }
 
     private ObjectOutputStream connection() throws IOException {
-        FileOutputStream fos = new FileOutputStream(file,false);
+        file.delete();
+        file.createNewFile();
+        FileOutputStream fos = new FileOutputStream(file,true);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         return oos;
     }
